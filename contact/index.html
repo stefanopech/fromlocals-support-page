@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fromlocals — Contact support</title>
+    <title>fromLocals — Contatta il supporto</title>
     <meta name="robots" content="noindex,nofollow" />
-    <!-- FAVICON -->
-<link rel="icon" type="image/png" href="/favicon-fromlocals.png">
-<link rel="apple-touch-icon" href="/favicon-fromlocals.png">
 
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/favicon-fronlocals.png">
+    <link rel="apple-touch-icon" href="/favicon-fronlocals.png">
 
     <style>
       :root{
@@ -42,22 +42,40 @@
         box-sizing: border-box;
       }
 
-      /* =========================
-         LOGO (MODIFICA QUI)
-         - Prima era ~110px
-         - Ora è il doppio: 220px (desktop)
-         ========================= */
+      /* LOGO */
       .fl-logo-wrap{
         display:flex;
         justify-content:center;
         align-items:center;
-        margin: 6px 0 30px 0;
+        margin: 6px 0 12px 0;
       }
       .fl-logo{
-        width: min(220px, 72vw); /* <-- LOGO SIZE: desktop 220px, mobile max 72vw */
+        width: min(220px, 72vw);
         height: auto;
         display:block;
       }
+
+      /* NAV SOTTO LOGO */
+      .fl-nav{
+        display:flex;
+        justify-content:center;
+        gap:10px;
+        margin: 0 0 22px 0;
+      }
+      .fl-nav a{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:10px 16px;
+        border-radius:9999px;
+        border:1px solid var(--fl-border);
+        color:var(--fl-text);
+        text-decoration:none;
+        font-weight:800;
+        font-size:14px;
+        background:#fff;
+      }
+      .fl-nav a:hover{ filter:brightness(.97); }
 
       .fl-support-title{
         margin: 0 0 10px 0;
@@ -65,7 +83,6 @@
         line-height: 1.12;
         font-weight: 800;
         letter-spacing: -0.02em;
-        text-align: left;
       }
 
       .fl-support-subtitle{
@@ -73,11 +90,9 @@
         font-size: 18px;
         line-height: 1.55;
         color: var(--fl-muted);
-        text-align: left;
       }
 
       .fl-form{
-        margin: 0;
         display: grid;
         gap: 16px;
       }
@@ -87,67 +102,20 @@
         margin: 0 0 8px 2px;
         font-size: 15px;
         font-weight: 700;
-        color: rgba(17,24,39,.78);
       }
 
       .fl-control{
         width: 100%;
-        box-sizing: border-box;
         height: 52px;
         padding: 12px 16px;
         border: 1px solid var(--fl-border);
         border-radius: var(--fl-radius);
-        background: var(--fl-bg);
-        color: var(--fl-text);
-
-        font: inherit;
         font-size: 17px;
-        line-height: 1.2;
-
-        outline: none;
-        transition: border-color .15s ease, box-shadow .15s ease;
-      }
-
-      .fl-control::placeholder{
-        color: rgba(17,24,39,.45);
-      }
-
-      .fl-control:focus{
-        border-color: rgba(251,15,17,.55);
-        box-shadow: 0 0 0 4px rgba(251,15,17,.12);
       }
 
       textarea.fl-control{
-        height: auto;
         min-height: 160px;
-        padding-top: 14px;
-        padding-bottom: 14px;
-        border-radius: 18px;
         resize: vertical;
-      }
-
-      select.fl-control{
-        appearance: none;
-        background-image:
-          linear-gradient(45deg, transparent 50%, rgba(17,24,39,.55) 50%),
-          linear-gradient(135deg, rgba(17,24,39,.55) 50%, transparent 50%);
-        background-position:
-          calc(100% - 20px) 23px,
-          calc(100% - 14px) 23px;
-        background-size: 6px 6px, 6px 6px;
-        background-repeat: no-repeat;
-        padding-right: 46px;
-      }
-
-      .fl-help{
-        margin: 8px 0 0 2px;
-        font-size: 14px;
-        line-height: 1.4;
-        color: var(--fl-muted);
-      }
-
-      .fl-captcha{
-        margin-top: 2px;
       }
 
       .fl-actions{
@@ -161,69 +129,31 @@
         cursor: pointer;
         border-radius: var(--fl-radius);
         height: 54px;
-
         width: min(320px, 90%);
-        max-width: 320px;
-
-        padding: 0 22px;
-        font: inherit;
         font-size: 18px;
         font-weight: 800;
-
         background: var(--fl-red);
         color: #fff;
-
-        transition: opacity .15s ease, transform .06s ease;
-        user-select: none;
       }
-
-      .fl-btn:hover{ opacity: .93; }
-      .fl-btn:active{ transform: translateY(1px); }
-      .fl-btn[disabled]{ opacity: .6; cursor: not-allowed; transform: none; }
 
       .fl-status{
         margin-top: 10px;
         text-align: center;
         font-size: 16px;
-        line-height: 1.4;
       }
-      .fl-status.ok{ color: #0A7A2F; }
-      .fl-status.err{ color: #B00020; }
-
-      .fl-hp{ display:none !important; }
 
       .footer{
-        margin-top: -10px;
+        margin-top: 30px;
         text-align: center;
         font-size: 14px;
-        line-height: 1.4;
         color: #6b7280;
       }
 
-      .footer a{
-        color: #111827;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
       .company-info{
-        margin-top: 100px;
+        margin-top: 80px;
         font-size: 13px;
         color: #9ca3af;
         text-align: center;
-      }
-
-      /* Mobile comfort spacing */
-      @media (max-width: 420px){
-        .fl-support-section{ padding: 22px 14px; }
-        .fl-support-title{ font-size: 30px; }
-        .fl-support-subtitle{ font-size: 17px; }
-        .fl-control{ font-size: 16.5px; }
-      }
-
-      @media (min-width: 768px){
-        .fl-support-section{ padding: 40px 20px; }
-        .fl-btn{ width: 260px; }
       }
     </style>
   </head>
@@ -232,181 +162,65 @@
     <div class="fl-support-section">
       <div class="fl-support-container">
 
-        <!-- =========================
-             LOGO (INSERITO QUI)
-             Modifica dimensioni in CSS: .fl-logo { width: min(220px, 72vw); }
-             ========================= -->
-       <!-- LOGO CLICCABILE → torna alla home -->
-<div class="fl-logo-wrap">
-  <a
-    href="https://www.fromlocals.com"
-    aria-label="Back to fromLocals homepage"
-  >
-    <img
-      class="fl-logo"
-      src="/logofromlocals.png"
-      alt="fromLocals"
-    />
-  </a>
-</div>
+        <!-- LOGO -->
+        <div class="fl-logo-wrap">
+          <a href="https://www.fromlocals.com" aria-label="Torna alla home fromLocals">
+            <img class="fl-logo" src="/logofromlocals.png" alt="fromLocals" />
+          </a>
+        </div>
 
-        <h1 class="fl-support-title">Contact support</h1>
+        <!-- NAV -->
+        <div class="fl-nav">
+          <a href="/">Guide</a>
+        </div>
+
+        <h1 class="fl-support-title">Contatta il supporto</h1>
         <p class="fl-support-subtitle">
-          Welcome to the support page of fromLocals. Please fill up all the following gaps
+          Compila il modulo qui sotto e il nostro team ti risponderà il prima possibile.
         </p>
 
-        <!-- FORM COMPLETO -->
+        <!-- FORM -->
         <form id="supportForm" class="fl-form" novalidate>
           <div>
-            <label class="fl-label" for="userType">I am a (select if you are a client or a supplier)</label>
-            <select id="userType" class="fl-control" name="userType" required>
-              <option value="" selected disabled>Select one</option>
-              <option value="customer">Client</option>
-              <option value="provider">Supplier</option>
+            <label class="fl-label">Sono un</label>
+            <select class="fl-control" name="userType" required>
+              <option value="" disabled selected>Seleziona</option>
+              <option value="customer">Cliente</option>
+              <option value="provider">Fornitore</option>
             </select>
           </div>
 
           <div>
-            <label class="fl-label" for="fullName">Full name</label>
-            <input
-              id="fullName"
-              class="fl-control"
-              name="fullName"
-              placeholder="First and last name"
-              autocomplete="name"
-              required
-            />
+            <label class="fl-label">Nome e cognome</label>
+            <input class="fl-control" name="fullName" required />
           </div>
 
           <div>
-            <label class="fl-label" for="email">Email</label>
-            <input
-              id="email"
-              class="fl-control"
-              name="email"
-              type="email"
-              placeholder="name@example.com"
-              autocomplete="email"
-              required
-            />
+            <label class="fl-label">Email</label>
+            <input class="fl-control" name="email" type="email" required />
           </div>
 
           <div>
-            <label class="fl-label" for="bookingNumber">Booking number (optional)</label>
-            <input
-              id="bookingNumber"
-              class="fl-control"
-              name="bookingNumber"
-              placeholder="e.g. BK-12345"
-              autocomplete="off"
-            />
-            <div class="fl-help">If you have one, this helps us locate your reservation faster</div>
-          </div>
-
-          <div>
-            <label class="fl-label" for="message">Message</label>
-            <textarea
-              id="message"
-              class="fl-control"
-              name="message"
-              placeholder="Write your message here..."
-              required
-            ></textarea>
-          </div>
-
-          <!-- honeypot anti-bot -->
-          <input class="fl-hp" name="website" autocomplete="off" tabindex="-1" />
-
-          <div class="fl-captcha">
-            <div class="g-recaptcha" data-sitekey="6Lc31U4sAAAAADcX4KxCJ6m_WiVRwRCAnFC1gxSt"></div>
+            <label class="fl-label">Messaggio</label>
+            <textarea class="fl-control" name="message" required></textarea>
           </div>
 
           <div class="fl-actions">
-            <button id="sendBtn" class="fl-btn" type="submit">Send</button>
+            <button class="fl-btn" type="submit">Invia messaggio</button>
           </div>
 
-          <div id="supportStatus" class="fl-status" aria-live="polite"></div>
+          <div id="supportStatus" class="fl-status"></div>
         </form>
 
-        <!-- FOOTER (no duplicati, no "Protected by...") -->
         <div class="footer">
-          <p>
-            By submitting this form, you agree to the processing of your personal data in accordance with our
-            <a href="https://fromlocals.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-            and
-            <a href="https://fromlocals.com/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
-          </p>
-
-          <p class="company-info">
-            fromLocals by SP S.R.L. Via Giulini 12, 22100 Como | P.IVA 04202400133 | REA: CO-427571
-          </p>
+          Inviando il modulo accetti la nostra
+          <a href="https://fromlocals.com/privacy-policy" target="_blank">Privacy Policy</a>.
+          <div class="company-info">
+            fromLocals by SP S.R.L. · P.IVA 04202400133
+          </div>
         </div>
 
       </div>
     </div>
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-    <script>
-      const form = document.getElementById("supportForm");
-      const statusEl = document.getElementById("supportStatus");
-      const sendBtn = document.getElementById("sendBtn");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const token = (window.grecaptcha && window.grecaptcha.getResponse)
-          ? window.grecaptcha.getResponse()
-          : "";
-
-        if (!token) {
-          statusEl.textContent = "Please complete the reCAPTCHA.";
-          statusEl.className = "fl-status err";
-          return;
-        }
-
-        const data = Object.fromEntries(new FormData(form).entries());
-
-        if (!data.userType || !data.fullName || !data.email || !data.message) {
-          statusEl.textContent = "Please fill in all required fields.";
-          statusEl.className = "fl-status err";
-          return;
-        }
-
-        statusEl.textContent = "Sending…";
-        statusEl.className = "fl-status";
-        sendBtn.disabled = true;
-
-        data.recaptchaToken = token;
-
-        try {
-          const r = await fetch("https://express-js-on-vercel-ashen-chi.vercel.app/support", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          });
-
-          const j = await r.json().catch(() => ({}));
-
-          if (r.ok && j.ok) {
-            statusEl.textContent = "Message sent! We'll reply by email shortly.";
-            statusEl.className = "fl-status ok";
-            form.reset();
-            if (window.grecaptcha) window.grecaptcha.reset();
-          } else {
-            statusEl.textContent = "Error sending message. Please try again.";
-            statusEl.className = "fl-status err";
-            if (window.grecaptcha) window.grecaptcha.reset();
-          }
-        } catch (err) {
-          statusEl.textContent = "Network error. Please try again.";
-          statusEl.className = "fl-status err";
-          if (window.grecaptcha) window.grecaptcha.reset();
-        } finally {
-          sendBtn.disabled = false;
-        }
-      });
-    </script>
   </body>
 </html>
-
