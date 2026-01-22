@@ -232,19 +232,29 @@
              LOGO (INSERITO QUI)
              Modifica dimensioni in CSS: .fl-logo { width: min(220px, 72vw); }
              ========================= -->
-        <div class="fl-logo-wrap">
-          <img class="fl-logo" src="/logofromlocals.png" alt="fromLocals" />
-        </div>
+       <!-- LOGO CLICCABILE → torna alla home -->
+<div class="fl-logo-wrap">
+  <a
+    href="https://www.fromlocals.com"
+    aria-label="Back to fromLocals homepage"
+  >
+    <img
+      class="fl-logo"
+      src="/logofromlocals.png"
+      alt="fromLocals"
+    />
+  </a>
+</div>
 
         <h1 class="fl-support-title">Contact support</h1>
         <p class="fl-support-subtitle">
-          Welcome to the support page of fromLocals. Fill up all the following gaps in order to reply you in the most accurate way
+          Welcome to the support page of fromLocals. Please fill up all the following gaps
         </p>
 
         <!-- FORM COMPLETO -->
         <form id="supportForm" class="fl-form" novalidate>
           <div>
-            <label class="fl-label" for="userType">I am a</label>
+            <label class="fl-label" for="userType">I am a (select if you are a client or a supplier)</label>
             <select id="userType" class="fl-control" name="userType" required>
               <option value="" selected disabled>Select one</option>
               <option value="customer">Client</option>
@@ -286,7 +296,7 @@
               placeholder="e.g. BK-12345"
               autocomplete="off"
             />
-            <div class="fl-help">If you have one, this helps us locate your reservation faster.</div>
+            <div class="fl-help">If you have one, this helps us locate your reservation faster</div>
           </div>
 
           <div>
